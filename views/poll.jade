@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  form(method="POST"
+    action="/results"
+    enctype="application/x-www-form-urlencoded'
+    required)
+    p Cast your vote
+    each candidate in candidates
+      if candidate
+        include candidate
+        
+    p
+    input(type="submit"
+      value="Next >")
+

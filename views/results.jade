@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  p Thank you for participating in the poll!
+  div
+    | Click 
+    a(href='/chat') here
+    |  to chat regarding the poll
+  br
+  div#national
+    h3.chartLabel Results
+    canvas#chartNational(width=200,
+      height=200)
+    ul
+      each value, key in nationalPoll
+        li(class="#{key}") #{key}: #{value} vote(s)
+
+  p
+  
+   script(src="javascripts/Chart.js")
+   script(type="text/javascript")
+    var dataNational = !{JSON.stringify(nationalChartData)};
+    var ctxNational = document.getElementById("chartNational").getContext("2d");
+    var chartNational = new Chart(ctxNational).Doughnut(dataNational);
